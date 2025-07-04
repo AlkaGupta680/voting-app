@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Candidate = require('../models/candidate'); // Ensure the model name is capitalized
-const User = require('../models/users'); // Import the User model
+const Candidate = require('../models/candidate'); 
+const User = require('../models/users');         
 const { jwtMiddleware } = require('../jwt');
 
 
