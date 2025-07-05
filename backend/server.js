@@ -15,7 +15,7 @@ app.use(cors({
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-// Routers
+//  API routes
 const userRoutes = require('./routes/userRoutes');
 const candidateRoutes = require('./routes/candidateRoutes');
 app.use('/user', userRoutes);
@@ -23,15 +23,16 @@ app.use('/candidate', candidateRoutes);
 
 // ======== Serve frontend in production ========
 // Serve static files from frontend/dist
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-// For any other route, send back index.html (for React Router)
+if(process.env.NODE_ENV === 'production'){
+app.use(express.static(path.join(__dirname,".." ,'/frontend/dist')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  res.sendFile(path.join(__dirname, ".." ,"frontend", "dist", "index.html"));
 });
-// ==============================================
+}
 
+
+// Start server and connect DB
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("server is listening on port", PORT);
+  console.log("server has started at http://localhost:" + PORT);
 });
