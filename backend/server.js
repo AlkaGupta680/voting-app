@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 //  API routes
 const userRoutes = require('./routes/userRoutes');
 const candidateRoutes = require('./routes/candidateRoutes');
-app.use('/user', userRoutes);
-app.use('/candidate', candidateRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/candidate', candidateRoutes);
 
 // ======== Serve frontend in production ========
 // Serve static files from frontend/dist

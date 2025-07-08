@@ -17,7 +17,7 @@ const VoteResults = () => {
 
   const fetchResults = async () => {
     try {
-      const response = await api.get('/candidate/vote/count')
+      const response = await api.get('/api/candidate/vote/count')
       setResults(response.data)
       const total = response.data.reduce((sum, candidate) => sum + candidate.count, 0)
       setTotalVotes(total)

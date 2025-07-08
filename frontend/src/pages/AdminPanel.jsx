@@ -23,7 +23,7 @@ const AdminPanel = () => {
 
   const fetchCandidates = async () => {
     try {
-      const response = await api.get('/candidate/candidate')
+      const response = await api.get('/api/candidate/candidate')
       setCandidates(response.data)
     } catch (error) {
       console.error('Failed to fetch candidates:', error)
