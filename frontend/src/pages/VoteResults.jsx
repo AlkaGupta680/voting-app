@@ -18,6 +18,17 @@ const VoteResults = () => {
   const fetchResults = async () => {
     try {
       const response = await api.get('/api/candidate/vote/count')
+      //adding this part 
+     console.log('API response data:', response.data);  // Add this log to confirm data
+    
+    if (!Array.isArray(response.data)) {
+      console.error('API response is not an array:', response.data);
+      setResults([]);
+      setTotalVotes(0);
+      setLoading(false);
+      return;
+    }
+//ends here
       setResults(response.data)
       const total = response.data.reduce((sum, candidate) => sum + candidate.count, 0)
       setTotalVotes(total)
